@@ -1,0 +1,23 @@
+{
+  "name": "houkokukun-bot",
+  "version": "1.0.0",
+  "description": "houkokukun-bot is a Discord tool designed for streamlined issue reporting and suggestions. With category-specific inputs, users can create organized reports for clear communication among members. Initiate with !startreport, follow prompts, and finalize with !submit.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cosmic-dust-sharehouse-team/houkokukun-bot.git"
+  },
+  "keywords": [
+    "discord",
+    "bot"
+  ],
+  "author": "tmyuu",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/cosmic-dust-sharehouse-team/houkokukun-bot/issues"
+  },
+  "homepage": "https://github.com/cosmic-dust-sharehouse-team/houkokukun-bot#readme"
+}
