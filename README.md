@@ -3,6 +3,11 @@ houkokukun-bot is a Discord tool designed for streamlined issue reporting and su
 
 ## How to Use
 Before running the bot, you'll need to set up your Discord token.
+### Step 0: Install discord.js
+Install the recommended version 13 of discord.js to your local repository.
+```
+npm install discord.js@v13-lts
+```
 ### Step 1: Create the Configuration File
 Create a new file named `token.json` in the root directory of your project.
 ### Step 2: Add the Token
