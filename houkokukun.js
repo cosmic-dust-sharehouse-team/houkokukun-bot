@@ -1,4 +1,4 @@
-const config = require("./config.json");
+const config = require("./token.json");
 const { Client, Intents, MessageEmbed } = require("discord.js");
 const client = new Client({
   intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES],
@@ -184,4 +184,4 @@ function handleSubmit(message) {
   console.log("Report submitted!");
 }
 
-client.login(config.DISCORD_BOT_TOKEN);
+client.login(token.DISCORD_BOT_TOKEN);
