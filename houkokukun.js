@@ -60,7 +60,7 @@ function startReport(message) {
   };
   console.log("Starting report...");
   message.channel.send(
-    "報告書の作成を開始します。カテゴリ一覧を確認してください（例: !category list）"
+    "報告書の作成を開始します。カテゴリ一覧を確認してください。\n```!category list```"
   );
 }
 
@@ -70,7 +70,7 @@ function handleCategory(message, args) {
       .map((cat, index) => `${index + 1}. ${cat}`)
       .join("\n");
     message.channel.send(
-      `カテゴリ一覧:\n${categoryList}\n報告の対象となる番号を選択してください（例: !category 1）`
+      `カテゴリ一覧:\n${categoryList}\n報告の対象となる番号を選択してください。\n\`\`\`!category <number>\`\`\``
     );
   } else {
     const selectedNumber = parseInt(args[0]) - 1;
@@ -82,7 +82,7 @@ function handleCategory(message, args) {
       promptNextStep(message);
     } else {
       message.channel.send(
-        "無効な番号です。もう一度選択してください（例: !category 1）"
+        "無効な番号です。もう一度選択してください。\n```!category <number>```"
       );
     }
   }
@@ -106,18 +106,18 @@ function updateAndNotify(message, field, value, fieldName) {
 
 function promptNextStep(message) {
   if (!report.category) {
-    message.channel.send("カテゴリを選択してください（例: !category list）");
+    message.channel.send("カテゴリを選択してください。\n```!category list```");
   } else if (!report.detail) {
     message.channel.send(
-      "報告の詳細を入力してください（例: !detail 部屋の鍵が壊れています）"
+      "報告の詳細を入力してください。\n```!detail 部屋の鍵が壊れています```"
     );
   } else if (!report.suggestion) {
     message.channel.send(
-      "報告に対する提案を入力してください（例: !suggest 交換しましょう！）"
+      "報告に対する提案を入力してください。\n```!suggest 交換しましょう！```"
     );
   } else {
     message.channel.send(
-      "すべてのフィールドが入力されました。!checkで確認後、!submitで報告書を提出してください。"
+      "すべてのフィールドが入力されました。`!check`で確認後、`!submit`で報告書を提出してください。"
     );
   }
 }
@@ -139,19 +139,20 @@ function checkIncompleteFields(message) {
 
   if (!report.category || !report.detail || !report.suggestion) {
     const missingFields = [];
-    if (!report.category) missingFields.push("- カテゴリ: !category list");
+    if (!report.category)
+      missingFields.push("- カテゴリ（例:\n```!category list```");
     if (!report.detail)
-      missingFields.push("- 詳細: !detail 部屋の鍵が壊れています");
+      missingFields.push("- 詳細（例:\n```!detail 部屋の鍵が壊れています```");
     if (!report.suggestion)
-      missingFields.push("- 提案: !suggest 交換しましょう！");
+      missingFields.push("- 提案（例:\n```!suggest 交換しましょう！```");
 
     const missingStr = missingFields.join("\n");
     message.channel.send(
-      `以下のフィールドが未入力です: \n${missingStr}\n上記を入力してから、!submitで報告書を提出してください。`
+      `以下のフィールドが未入力です: \n${missingStr}\n上記を入力してから、\`!submit\`で報告書を提出してください。`
     );
   } else {
     message.channel.send(
-      "すべてのフィールドが入力されています。報告書の提出には!submitを使用します。"
+      "すべてのフィールドが入力されています。報告書の提出には`!submit`を使用します。"
     );
   }
 
@@ -175,7 +176,7 @@ function handleSubmit(message) {
 
   if (!report.category || !report.detail || !report.suggestion) {
     message.channel.send(
-      "未入力のフィールドがあります。確認するには!checkを使用してください。"
+      "未入力のフィールドがあります。確認するには`!check`を使用してください。"
     );
     return;
   }
